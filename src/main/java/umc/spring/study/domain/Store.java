@@ -1,11 +1,9 @@
 package umc.spring.study.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.study.domain.common.BaseEntity;
+
 
 @Entity
 @Getter
@@ -23,4 +21,8 @@ public class Store extends BaseEntity {
     private String address;
 
     private Float score;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    private Region region; // Region 엔티티와의 관계
 }
